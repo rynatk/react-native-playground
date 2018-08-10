@@ -1,5 +1,11 @@
 import React, { Component } from 'react'
 import { ScrollView, Text, Image, View } from 'react-native'
+
+/**
+ * Testing Custom NativeModules
+ */
+import { NativeModules } from 'react-native';
+
 import DevscreensButton from '../../ignite/DevScreens/DevscreensButton.js'
 
 import { Images } from '../Themes'
@@ -8,6 +14,10 @@ import { Images } from '../Themes'
 import styles from './Styles/LaunchScreenStyles'
 
 export default class LaunchScreen extends Component {
+  componentDidMount () {
+    NativeModules.CustomModule.getDeviceName((err, name) => alert(`Hello ${name}!`));
+  }
+
   render () {
     return (
       <View style={styles.mainContainer}>
